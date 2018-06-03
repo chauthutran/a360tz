@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg8"
+   height="36"
+   viewBox="0 0 9.524999999 9.524999999"
+   width="36"
+   version="1.1"
+   sodipodi:docname="btn_del.svg"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     id="namedview6"
+     showgrid="false"
+     inkscape:zoom="7.375000003"
+     inkscape:cx="24.56708968"
+     inkscape:cy="8.198537253"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg8" />
+  <title
+     id="title4753">UIO-icon</title>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>UIO-icon</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Joaquín Urbano</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>GPL</dc:title>
+          </cc:Agent>
+        </dc:rights>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <path
+     id="path828"
+     d="M 8.12154935,1.386650913 C 6.257548548,-0.4685635064 3.242004099,-0.4612759414 1.386772932,1.402979897 -0.4686094368,3.267507886 -0.4613215688,6.282624423 1.403132835,8.138383141 3.267708198,9.993537084 6.282980487,9.986279758 8.138211656,8.122054157 9.993745227,6.257526171 9.986185197,3.242409634 8.121881993,1.387255691 Z M 7.808866542,1.701135035 C 9.499289078,3.3836251 9.506546697,6.118125034 7.823986602,7.808779588 6.141124098,9.499736531 3.406812735,9.506086691 1.715785403,7.823596629 0.0251209506,6.141106565 0.018468125,3.406606633 1.700967745,1.715952078 3.383527845,0.0253277616 6.118141611,0.0186449746 7.808866542,1.701135035 Z M 6.104231157,2.738932646 4.760965167,4.089097658 3.41074395,2.745585196 2.739110957,3.420516508 4.089029772,4.76402897 2.745763782,6.113891594 3.420723189,6.785496633 4.764291581,5.435634008 6.114210395,6.779146471 6.78584339,6.103912771 5.435924575,4.760702696 6.779190564,3.410537683 Z"
+     style="fill:#f184ad;fill-rule:evenodd;stroke-width:0.2645800114;fill-opacity:1"
+     inkscape:connector-curvature="0" />
+</svg>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" version="2.4">
+  <display-name>lesotho Application</display-name>
+  <description>
+        This is a simple web application with a source code organization
+        based on the recommendations of the Application Developer's Guide.
+    </description>
+    
+  <servlet>
+    <servlet-name>LoginForm</servlet-name>
+    <servlet-class>psi.a360tz.app.LoginForm</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>ClearSession</servlet-name>
+    <servlet-class>psi.a360tz.app.ClearSession</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>EventController</servlet-name>
+    <servlet-class>psi.a360tz.service.EventController</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>UserAccountController</servlet-name>
+    <servlet-class>psi.a360tz.service.UserAccountController</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>ClientController</servlet-name>
+    <servlet-class>psi.a360tz.service.ClientController</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>translation</servlet-name>
+    <servlet-class>psi.a360tz.service.TranslationController</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>checkSession</servlet-name>
+    <servlet-class>psi.a360tz.app.CheckSession</servlet-class>
+  </servlet>
+  
+  
+  
+  <servlet-mapping>
+    <servlet-name>LoginForm</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>ClearSession</servlet-name>
+    <url-pattern>/clearSession</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>EventController</servlet-name>
+    <url-pattern>/event/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>UserAccountController</servlet-name>
+    <url-pattern>/user/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>ClientController</servlet-name>
+    <url-pattern>/client/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>translation</servlet-name>
+    <url-pattern>/translation/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>checkSession</servlet-name>
+    <url-pattern>/checkSession</url-pattern>
+  </servlet-mapping>
+  
+  
+  <session-config>
+    <session-timeout>60</session-timeout> <!-- in minutes -->
+  </session-config>
+  
+</web-app>

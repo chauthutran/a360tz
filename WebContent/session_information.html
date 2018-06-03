@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>A360TZ - A2</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=Signika:700" rel="stylesheet">
+    <link rel='stylesheet' href='css/main.css'>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+   
+    
+	<script src="js/jQuery/jquery-1.11.1.min.js"></script>
+	<script src="js/jQuery/jquery-1.9.1.min.js"></script>
+	<script src="js/jQuery/jquery-ui.min.js"></script>
+	<script src="js/jQuery/jquery.blockUI.js"></script>
+	
+	<script type="text/javascript" src="js/jQuery/drag_sortTable/jquery.tablesorter.js"></script>
+	
+</head>
+
+<body class="bk_pineapple">
+
+<input type="hidden" id="selsr" value="U303125">
+<!-- ======================================================================= -->
+<!--  HEADER  -->
+
+<header class="bk_pineapple" id="event_header" class="event_tag">
+    <div class="back_to_session_form_btn">
+        <img src='img/kuwa_mjanja_logo_white_48.svg' style='display:none;'>
+    </div>
+    <div id="header_2" class="title_adm">
+        KUWA MJANJA
+    </div>
+</header>
+
+
+<header class="bk_mint" id="registration_participant_header" style="display:none;" class="registration_tag">
+    <div class="back_to_session_form_btn">
+        <img src='img/kuwa_mjanja_logo_white_48.svg' style='display:none;'>
+    </div>
+    <div id="header_2" class="title_usr" style="width: 60%; font-size: 240%;">
+        Karibu Kuwa Mjanja
+    </div>
+    <div id="switch_view_mode_btn" class="pointer">
+        <img src='img/switch.svg'>
+    </div>
+</header>
+   
+<!-- END - HEADER  -->   
+<!-- ======================================================================= -->
+
+
+
+<!-- ======================================================================= -->
+<!--  Session Expired  -->
+
+<div id="session_expired_msg_form" class="popup" style="display:none;height:130px;box-sizing:border-box;">
+    <div class="popup_header">
+        <div class="popup_title">
+            <b keyword="session_header">Warming</b>
+        </div>
+    </div>
+    <div class="popup_body" style="height:40px;box-sizing:border-box;" >
+    	<span keyword="session_msg_sessionExpired">Session is expired. Please login again</span>
+	</div>
+    <div class="popup_foot">
+        <div class="popup_foot_right" id="move_to_login_page_btn" keyword="common_btn_ok">Ok</div>
+    </div>
+</div>
+	
+	
+<div id="" class='mainDiv' style="display:none;">
+	</div>
+
+<!--  END - Session Expired  -->
+<!-- ======================================================================= -->
+
+
+
+
+<!-- ======================================================================= -->
+<!--  Session Information  -->
+
+<div id="session_information_div" class='contenedor bk_pineapple mainDiv bk_pineapple event_tag' >
+
+	
+	<!-- ------------------------------------------------------------------- -->
+	<!--  List of A360 Events  -->
+
+    <section class="data_app_page bg">
+        <section class='main'>
+            <img src='img/kuwa_mjanja_logo_white_48.svg'>
+        </section>
+        <aside>
+            <div class='form_aside'>
+                	
+                
+                  <!-- --------------------------------------------------- -->
+				  <!--  List of ACTIVE A360 Events  -->
+			
+                  <table id="active_even_list" class="session_ia">
+                      <thead>
+                          <tr>
+                              <th scope="col" keyword="sessionInformation_activetable_rowHeader_date">Date</th>
+                              <th scope="col" keyword="sessionInformation_activetable_rowHeader_location">Location</th>
+                          </tr>
+                      </thead>
+                      <tbody id="table_sessions"> </tbody>
+                  </table>
+                  
+                  <!-- --------------------------------------------------- -->
+				  <!--  Message No any active A360 Events  -->
+
+                  <div id="no_active_event_msg" style="display:none;font-style:italic;text-align:left;" keyword="sessionInformation_msg_noActiveEventExist">No active events exist. Create a new event by pressing the plus button</div>
+                  
+                  
+                  <!-- --------------------------------------------------- -->
+			      <!--  List of CLOSED A360 Events  -->
+                 
+                  <div id='closed_session_btn' class='pointer'>
+                      <img id="closed_session_icon" src='img/contract.svg'>
+                      <label id="closed_session_title" class="pointer" keyword="sessionInformation_closedTable_header" style="width:60%;">Closed Sessions</label>
+                  </div>
+                  
+                  <table id="closed_event_list" class="session_ic" style="height:50px;">
+                      <thead>
+                          <tr>
+                              <th scope="col" keyword="sessionInformation_closedTable_rowHeader_date">Date</th>
+                              <th scope="col" keyword="sessionInformation_closedTable_rowHeader_location" >Location</th>
+                          </tr>
+                      </thead>
+                      <tbody></tbody>
+                  </table>
+              </div>
+        </aside>
+    </section>
+    
+    
+	<!--  END - List of A360 Events  -->
+	<!-- ------------------------------------------------------------------- -->
+
+
+
+
+	<!-- ------------------------------------------------------------------- -->
+	<!--  Add A360 Event button  -->
+
+    <section class="nav">
+		<section class="btn_c">
+        </section>
+        <section class="btn_c">
+        </section>
+        <section class="btn_c">
+        </section>
+        <section class="btn_c">
+        </section>
+        <section id="add_new_event_btn" class='btn_c pointer'>
+            <img src='img/btn_add.svg'>
+        </section>
+    </section>
+    
+	<!--  END - Add A360 Event button  -->
+	<!-- ------------------------------------------------------------------- -->
+    
+    
+    
+	<!-- ------------------------------------------------------------------- -->
+	<!--  Add a360 Event FORM  -->
+
+	<div id="add_event_form" class="popup" style="display:none;height:350px;box-sizing:border-box;">
+	    <div class="popup_header">
+	        <div class="popup_title">
+	            <b keyword="addA360EventForm_header">Add a new event</b>
+	        </div>
+	    </div>
+	    <div class="popup_body" style="height:220px;box-sizing:border-box;">
+	        <div><p><span keyword="addA360EventForm_date">Date</span> <span class='required'>*</span> </p>
+	        <input type='date' id='event_date' class='input_screen' mandatory="true"></div>
+	        <div><p><span keyword="addA360EventForm_sessionType">Session type</span> <span class='required'>*</span> </p>
+	        <select id='in_status' class='select_sc2' deId="PjP2gCDbAmu" mandatory="true" style="width:100%;font-size100%padding:5px;border:1px solid #bdbdbd;border-radius:2px;box-sizing:border-box;">
+	            <option value='' keyword="addA360EventForm_pleaseSelect">[Please select]</option>
+	            <option value='KM-GC'>KM - Girls’ Clinic</option>
+	            <option value='KM-ICP'>KM - In-Clinic Pop-up</option>
+	            <option value='KM-OCP'>KM - Out-Clinic Pop-up</option>
+	            <option value='KM-PC'>KM - Parents’ Clinic</option>
+	        </select></div>
+	        <div><p>Location <span class='required'>*</span> </p>
+	        <input type='text' id='event_location' class='input_screen' deId="yJH6o6I2gsQ" mandatory="true" autocomplete="off"></div>
+	    </div>
+	    <br><br>
+	    <div class="popup_foot">
+	        <div class="popup_foot_left" id="add_event_btn" keyword="addA360EventForm_btn_add">Add</div>
+	        <div class="popup_foot_right"id="cancel_add_event_btn" keyword="addA360EventForm_btn_cancel">Cancel</div>
+	    </div>
+	</div>
+    <!-- div class="dialog">
+           <div class="popup_header_d">
+               <div class="popup_title_d">
+                   <b>Add a new event</b>
+               </div>
+           </div>
+           <div class="popup_body_d">
+               <p>it is necessary to complete all the data in order to create the event. Thank you</p>
+           </div>
+           <div class="popup_foot_d">
+               <div class="popup_foot_left_d"></div>
+               <div class="popup_foot_right_d" >Ok</div>
+           </div>
+       </div> 
+    </div>  -->
+    
+    
+	<!--  END - Add a360 Event FORM  -->
+	<!-- ------------------------------------------------------------------- -->
+	  
+ 
+ </div>
+ 
+<!--  END - Session Information  -->
+<!-- ======================================================================= -->
+ 
+ 
+ 
+<!-- ======================================================================= -->
+<!--  Event Participant  -->
+
+<div id="event_participant_div" style="display:none;" class="contenedor  mainDiv bk_pineapple event_tag">	
+	
+	<!-- ------------------------------------------------------------------- -->
+	<!--  LIST Event Participant  -->
+	
+	<section class="data_app_page bg">
+        <section class='main'>
+            <img src='img/kuwa_mjanja_logo_white_48.svg'>
+        </section>
+        <aside>
+            <div class='form_aside'>
+                <div class='event-body'>
+					<span name='event_details_title'></span>
+					<div id='complete_btn' class='pointer complete_btn'></div>
+					<div id="selected_event_status">&nbsp;</div>
+				</div>
+				<table id="event_list" class="event_p">
+					<thead>
+						<tr>
+							<th class="width_ct1_ep"></th>
+							<th class="width_ct2_ep" keyword="eventParticipant_tableHeader_nameDoB">Name, DoB</th>
+							<th class="width_ctck_ep" keyword="eventParticipant_tableHeader_checkedIn">Checked-in</th>
+							<th class="width_ct1_ep"></th>
+							<th class="width_nbsp"></th>&nbsp</th>
+
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+            </div>
+        </aside>
+    </section>
+    
+	<!--  LIST Event Participant -->
+	<!-- ------------------------------------------------------------------- -->
+    
+    
+	<!-- ------------------------------------------------------------------- -->
+	<!--  Footer BUTTONS -->
+	
+    <section class="nav">
+        <section class="btn_c">
+        </section>
+        
+		<section class="btn_c">
+        </section>
+		
+        <!--  Back to Session Information -->
+        <section id="back_to_session" class='btn_c pointer'>
+            <img src='img/btn_cirle_back.svg'>
+        </section>
+        
+        <!--  Open Registration Event participant page -->
+        <section id="close_registration" class='btn_c pointer'>
+            <img src='img/close_registration.svg'>
+        </section>
+        
+        <!--  Delete all Event participants in list and delete A360 event -->
+        <section id="del_event" class='btn_c pointer'>
+            <img src='img/btn_cirle_del.svg'>
+        </section>
+        
+    </section>
+    
+	<!--  Footer BUTTONS -->
+	<!-- ------------------------------------------------------------------- -->
+	   
+	   
+	   
+  	<!-- ------------------------------------------------------------------- -->
+	<!--  Delete ALL event Dialog -->
+	 
+	  
+	<div id="delete_all_events_dialog" class="dialog">
+	    <div class="popup_header_d">
+	        <div class="popup_title_d">
+	            <b keyword="eventParticipant_btn_deleteSession">Delete session</b>
+	        </div>
+	    </div>
+	    <div class="popup_body_d">
+	        <div><p keyword="eventParticipant_msg_delete">Are you sure that you want to delete</p> 
+	            <b name="event_details_title"></b>
+	        </p></div>
+	    </div>
+	    <div class="popup_foot_d">
+	        <div class="popup_foot_left_d" id="delete_event_participant_btn" keyword="common_btn_yes">Yes</div>
+	        <div class="popup_foot_right_d" id="cancel_delete_event_participant_btn" keyword="common_btn_no">No</div>
+	    </div>
+	</div>
+	
+	<!--  END - Delete ALL event Dialog -->
+	<!-- ------------------------------------------------------------------- -->
+	 
+
+</div>
+
+
+<!--  END - Event Participant  -->
+<!-- ======================================================================= -->
+
+    
+    
+    
+    
+
+<!-- ======================================================================= -->
+<!--  Registration Mode View 1  -->
+
+<div id="registration_view_1" class="contenedor mainDiv bk_mint registration_tag" style="display:none;">
+	
+	
+	<!-- ------------------------------------------------------------------- -->
+	<!--  List of Registration BUTTONS -->
+	
+    <section class='rg_cont'>
+        <section class='main rg_main'>
+            <img src='img/kuwa_mjanja_logo_white_48.svg'>
+        </section>
+        <aside class="rg_aside">
+            <div name='event_details_title' class='event-body'></div>
+            <div class='form_aside reg_pad'>
+	
+	<!--  BUTTON - Search by Voucher -->
+                <div id='show_search_voucher_form' class='btn_circle_nav pointer invitation' >
+                    <img src='img/invitation.svg'>
+                </div>
+                
+	<!--  BUTTON - Search by Mobile phone -->
+                <div id='show_search_mobile_form' class='btn_circle_nav pointer mobile'>
+                    <img src='img/mobile.svg'>
+                </div>
+                
+	<!--  BUTTON - Search by Client details -->
+                <div id='show_search_client_form' class='btn_circle_nav pointer personal_details'>
+                    <img src='img/personal_d.svg'>
+                </div>
+            </div>
+        </aside>
+    </section>
+	
+	<!--  END - List of Registration BUTTONS -->
+	<!-- ------------------------------------------------------------------- -->
+	
+	
+	
+
+	<!-- ------------------------------------------------------------------- -->
+	<!--  Go back Session Information FORM -->
+	
+	<div id='back_to_session_form' class="dialog" style="display:none;">
+	    <div class="popup_header">
+	        <div class="popup_title">
+	            <b keyword="registrationView1_exitHeader_exit">Exit</b>
+	        </div>
+	    </div>
+	    <div class="popup_body">
+	    	<p keyword="registrationView1_msg_enterPinToExitMode">To exit registration mode, enter your PIN</p>
+	       	<input type='password' id='pin_pass' class="input_seach_form" style="padding-left: 10px;" autocomplete="off" maxlength="4" mandatory="true">
+	       	<div id='check_pin_error_msg' style='color:red;display:none;' keyword="registrationView1_msg_wrongPin">Wrong PIN!!</div>
+	    </div>
+	    <div class="popup_foot">
+	        <div class="popup_foot_left" keyword="common_btn_yes">Yes</div>
+	        <div class="popup_foot_right" keyword="common_btn_no">No</div>
+	    </div>
+	</div>
+
+
+	<!--  Go back Session Information FORM -->
+	<!-- ------------------------------------------------------------------- -->
+
+
+
+	<!-- ------------------------------------------------------------------- -->
+	<!--  Search clients-result FORM -->
+	
+	<div id='confirmation_screen' class="dialog" style="height: 190px; display: none;">
+	    <div class="popup_header">
+	        <div class="popup_title">
+	            <b keyword="searhClientResult_header_confirmation">Confirmation</b>
+	        </div>
+	    </div>
+	    <div class="popup_body">
+									
+	   		<input id='teiId' type='hidden' >
+	        <p id='p_first_and_last_name'></p>
+	        <p keyword="searhClientResult_msg_isThisYou">Is this you?</p>
+	   		<div id='search_total_result_msg' style="color:#C0C0C0;float: right;"></div>
+	    </div>
+	    <div class="popup_foot">
+	        <div class="popup_foot_left" keyword="common_btn_yes">Yes</div>
+	        <div class="popup_foot_right" keyword="common_btn_no">No</div>
+	    </div>
+	</div>
+
+
+	<!-- ------------------------------------------------------------------- -->
+	<!--  Search clients-result FORM -->
+	
+	<div id='confirmation_message_form' class="dialog" style="height: 130px; display: none;">
+	    <div class="popup_header">
+	        <div class="popup_title">
+	            <b keyword="confirmationMessageForm_header">Confirmation</b>
+	        </div>
+	    </div>
+	    <div class="popup_body" style="height: 45px;text-align: center;">	
+	   		<div id='search_confirm_msg'></div>
+	    </div>
+	    <div class="popup_foot" style="margin-left: 70px;">
+	        <div class="popup_foot_left" id="confirmation_message_ok_btn" keyword="common_btn_ok">OK</div>
+	    </div>
+	</div>
+	
+	
+	<!-- ------------------------------------------------------------------- -->
+	<!--  Ask to add new Client Participant if no search result ( use for Client Infor search ) -->
+	
+	<div id='confirmation_client_no_result_message_form' class="dialog" style="height: 270px; display: none;">
+	    <div class="popup_header">
+	        <div class="popup_title">
+	            <b keyword="confirmationMessageForm_header">Confirmation</b>
+	        </div>
+	    </div>
+	    <div class="popup_body" style="height: 180px; margin-left: 20px;">	
+	   		<div id='confirmation_client_no_result_msg' ></div>
+	    </div>
+	    <div class="popup_foot">
+	        <div class="popup_foot_left" id="confirmation_client_no_result_message_ok_btn" keyword="common_btn_yes">Yes</div>
+	        <div class="popup_foot_left" id="confirmation_client_no_result_message_cancel_btn" keyword="common_btn_no">No</div>
+	    </div>
+	</div>
+	
+	
+
+	<!-- ----------------------------------------------------------------------- -->
+	<!--  Search by Voucher -->
+	
+	<div id='search_by_voucher_form' class="dialog">
+	    <div class="popup_header">
+	        <div class="popup_title">
+	            <b keyword="searchByVoucher_header">Invitation</b>
+	        </div>
+	    </div>
+	    <div class="popup_body">
+	        <p keyword="searchByVoucher_enterVoucherNumber">Enter invitation number</p>
+	        <div><input type='number' id='voucher_code' number="true" length="8,10" mandatory="true" style="font-size: 100%; height: 40px; padding: 5px; border: 1px solid rgb(189, 189, 189); width: 100%; border-radius: 2px; box-sizing: border-box;"></div>
+	    </div>
+	    <div class="popup_foot">
+	        <div class="popup_foot_left" id="search_by_voucher" keyword="common_btn_search">Search</div>
+	        <div class="popup_foot_right" id="cancel_search_by_voucher" keyword="common_btn_cancel">Cancel</div>
+	    </div>
+	</div>
+
+	
+	<!-- ----------------------------------------------------------------------- -->
+	<!--  Search by mobile -->
+	
+	<div id='search_by_mobile_form' class="dialog" >
+	    <div class="popup_header">
+	        <div class="popup_title">
+	            <b keyword="searchByMobile_header">Mobile number</b>
+	        </div>
+	    </div>
+	    <div class="popup_body" >
+	        <p keyword="searchByMobile_enterPhoneNumber">Enter your mobile number</p>
+	        <div><input type='text' id='mobile_number' class="input_seach_form" phonenumber="true" mandatory="true"></div>
+	    </div>
+	    <div class="popup_foot">
+	        <div class="popup_foot_left" id="search_by_mobile" keyword="common_btn_search">Search</div>
+	        <div class="popup_foot_right" id="cancel_search_by_mobile" keyword="common_btn_cancel">Cancel</div>
+	    </div>
+	</div>
+
+
+	<!-- ------------------------------------------------------------------- -->
+	<!--  Search by Client details -->
+	
+	<div id='search_by_client_form' class="dialog" style="height: 470px">
+	    <div class="popup_header">
+	        <div class="popup_title">
+	            <b keyword="searchByClientInfo_header">Personal details</b>
+	        </div>
+	    </div>
+	    <div class="popup_body" style="height: 380px">
+	        <div><input type='text' id='first_name' placeholderKey='searchByClientInfo_title_firstName' class="input_seach_form" mandatory="true" minlength="2"></div>
+	        <div><input type='text' id='last_name' placeholderKey='searchByClientInfo_title_lastName' class="input_seach_form" mandatory="true" minlength="2"></div>
+	        <div><input type='text' id='mother_name' placeholderKey='searchByClientInfo_title_motherName' class="input_seach_form" mandatory="true" minlength="2"></div>
+	        <div><input type='text' id='birth_district' placeholderKey='searchByClientInfo_title_birthDistrict' class="input_seach_form" mandatory="true" minlength="2"></div>
+	        <p keyword="searchByClientInfo_title_birthDate">Date of Birth</p>
+	        <div><input type='date' id='date_of_birth' class="input_seach_form" mandatory="true" minlength="2"></div>
+	    </div>
+	    <div class="popup_foot">
+	        <div class="popup_foot_left" id="seach_by_client_btn" keyword="common_btn_search">Search</div>
+	        <div class="popup_foot_right" id="cancel_seach_by_client_btn" keyword="common_btn_cancel">Cancel</div>
+	    </div>
+	
+	</div>
+	
+	<div id="back_to_session_form_btn" class="pointer" style="float:right;width:20%;box-sizing:border-box;">
+        <img src='img/er.svg' style="width:40%;float:right;">
+    </div>
+	
+</div>
+
+<!--  END - Registration View 1  -->
+<!-- ======================================================================= -->
+
+   
+
+<!-- ======================================================================= -->
+<!--  Registration View 2  -->
+
+<div id="registration_view_2"  class='mainDiv bk_mint registration_tag' style="display:none;">     
+
+	<!-- ------------------------------------------------------------------- -->
+	<!--  List of Event participants -->
+	 
+       <section class='rg_cont'>
+           <section class='main rg_main'>
+               <img src='img/kuwa_mjanja_logo_white_48.svg'>
+           </section>
+           <aside class="rg_aside">
+               <div class='form_aside'>
+                   <div name='event_details_title' class='event-body'></div>
+                   <div id='form_log'>
+                       <table id="event_rm">
+                           <thead>
+                               <tr>
+                                   <th class="width_c_rm">Invitation</th>
+                                   <th class="width_c_rm">Phone Number</th>
+                                   <th class="width_c_rm">Name</th>
+                                   <th class="width_c_rm">Date of Birth</th>
+                                   <th class="width_c_rm">District of Birth</th>
+                               </tr>
+                           </thead>
+                           <tbody> </tbody>
+                       </table>
+                   </div>
+               </div>
+           </aside>
+       </section>
+       
+	<!--  END - List of Event participants -->
+	<!-- ------------------------------------------------------------------- -->
+	
+		
+	<!-- ------------------------------------------------------------------- -->
+	<!--  Search clients RESULT -->
+		
+	<div id='confirmation_screen' class="dialog" style="height: 180px; display: none;">
+	    <div class="popup_header">
+	        <div class="popup_title">
+	            <b>Confirmation</b>
+	        </div>
+	    </div>
+	    <div class="popup_body" style="height: 100px;"">
+									
+	   		<input id='teiId' type='hidden' >
+	        <p id='p_first_and_last_name'></p>
+	        <p>Is this you?</p>
+	    </div>
+	</div>
+
+	<!--  END - Search clients RESULT -->
+	<!-- ------------------------------------------------------------------- -->
+
+</div>
+
+<!--  Registration View 2  -->
+<!-- ======================================================================= -->
+
+
+
+<!-- ======================================================================= -->
+<!--  Footer  -->
+   
+<footer class="bk_pineapple">
+    <div id="menu_log">
+        [<label id='orgunit_code'></label>]
+        <label id='orgunit_name'></label>
+        <a href="index.html" style="color: white;">[<label id="logout_btn" style="padding-left:10px;cursor:pointer;" keyword="common_logout">Logout</label>]</a>
+    </div>
+</footer>
+  
+<!--  END - Footer  --> 
+<!-- ======================================================================= -->
+
+
+</body>
+  
+
+<script src='js/app/utils/utils.js'></script>
+<script src='js/app/utils/commons.js'></script>
+<script src='js/app/session/sessionTimeOutPicker.js'></script>
+
+
+<script src='js/app/utils/storage.js'></script>
+<script src='js/app/utils/translation.js'></script>
+<script src='js/app/app.js'></script>
+	
+<script src='js/app/utils/MsgManager.js'></script>
+<script src='js/app/utils/validation.js'></script>
+<script src='js/screenPage.js'></script>
+<script src='js/app/lockEvent.js'></script>
+<script src='js/app/sessionInformation.js'></script>
+<script src='js/app/eventParticipant.js'></script>
+<script src='js/app/registrationMode.js'></script>
+
+<script>
+
+$( document ).ready( function() 
+{
+	/* new A360TZApp( "../", function( translationObj, storageObj ) {
+		new Event( translationObj, storageObj );
+	}, "getTranslation"); */
+	
+	new A360TZApp( "../", function( translationObj, storageObj ) {
+		new Event( translationObj, storageObj );
+	}); 
+});
+
+
+// $(document).ready(function(){
+// 	new Event();
+// });
+
+</script>
+
+</html>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg8"
+   height="48"
+   viewBox="0 0 12.7 12.7"
+   width="48"
+   version="1.1"
+   sodipodi:docname="close_registration.svg"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     id="namedview6"
+     showgrid="false"
+     inkscape:zoom="0.4345760434"
+     inkscape:cx="-640.0518276"
+     inkscape:cy="-263.6068355"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg8" />
+  <metadata
+     id="metadata8">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <path
+     id="path828"
+     d="m24 3.9961c-11.048 0-20.004 8.9559-20.004 20.004 0.0002 11.048 8.956 20.004 20.004 20.004s20.004-8.956 20.004-20.004-8.956-20.004-20.004-20.004zm0 1.8633c10.019 0 18.141 8.1216 18.141 18.141s-8.122 18.141-18.141 18.141-18.141-8.122-18.141-18.141c0.0008-10.019 8.122-18.141 18.141-18.141zm0 4.9196c-3.475 0-6.295 2.82-6.295 6.295v2.52h-1.26c-1.385 0-2.517 1.132-2.517 2.517v12.59c0 1.385 1.132 2.52 2.517 2.52h15.11c1.385 0 2.517-1.135 2.517-2.52v-12.59c0-1.385-1.132-2.517-2.517-2.517h-1.26v-2.52c0-3.475-2.82-6.295-6.295-6.295zm0 2.393c2.153 0 3.902 1.749 3.902 3.902v2.52h-7.806v-2.52c0-2.153 1.751-3.902 3.904-3.902zm-7.555 8.939h15.11v12.59h-15.11v-12.59zm7.555 3.778c-1.385 0-2.518 1.132-2.518 2.517s1.133 2.518 2.518 2.518 2.518-1.133 2.518-2.518-1.133-2.517-2.518-2.517z"
+     fill-rule="evenodd"
+     transform="scale(.26458)"
+     stroke-width=".99999"
+     fill="#333"
+     style="fill:#ffffff" />
+</svg>

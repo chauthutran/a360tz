@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>A360TZ - A2</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=Signika:700" rel="stylesheet">
+    <link rel='stylesheet' href='css/main.css'>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    
+    <meta http-equiv="cache-control" content="max-age=0" />
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="0" />
+	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+	<meta http-equiv="pragma" content="no-cache" />
+	
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="application-name" content="A360TZ - A2">
+	<meta name="apple-mobile-web-app-title" content="A360TZ - A2">
+	
+	
+	<script src="js/jQuery/jquery-1.11.1.min.js"></script>
+	<script src="js/jQuery/jquery-1.9.1.min.js"></script>
+	<script src="js/jQuery/jquery-ui.min.js"></script>
+	<script src="js/jQuery/jquery.blockUI.js"></script>
+	
+    
+     <script src='js/app/utils/utils.js'></script>
+    <script src='js/app/utils/commons.js'></script>
+    
+	<script src='js/app/utils/storage.js'></script>
+	<script src='js/app/utils/translation.js'></script>
+	<script src='js/app/app.js'></script>
+	
+    <script src='js/app/utils/MsgManager.js'></script>
+    <script src='js/app/utils/validation.js'></script>
+    <script src='js/screenLogin.js'></script>
+    <script src='js/index.js'></script>
+</head>
+
+<body class="bk_pineapple">
+  <div class='contenedor bk_pineapple'>
+  <input type="hidden" id="selsr" value="U303120">
+    <header>
+        <div class="back_to_session_form_btn" >
+            <img id='h1_img' src='img/kuwa_mjanja_logo_white_48.svg' >
+        </div>
+        <div id="header_2" class="title_adm">
+            KUWA MJANJA
+        </div>
+    </header>
+        
+       <section class='data_app bg'>
+            <section class='main'>
+                <img src='img/kuwa_mjanja_logo_black_48.svg'>
+            </section>
+            <aside>
+                <div id='loginForm' class='form_aside'>
+                    <form id='form_log' method="POST">
+                        <div><input type='text' id='log_username' name='name_user' class='input_log img_bkg_profile' placeholderKey='login_userName' placeholder='User Name' maxlength="10" mandatory="true"></div>
+                        <div><input type='password' id='log_password' name='pass_user' class='input_log img_bkg_key' placeholderKey='login_password' placeholder='Password' maxlength="4" mandatory="true"></div>
+						<div><select id='log_language' class="img_bkg_language" style="font-size: 100%;padding: 5px;border: 1px solid rgb(189, 189, 189);border-radius: 2px;box-sizing: border-box;font-size: 100%;padding-top: 15px;padding-left: 65px;padding-bottom: 10px;margin-bottom: 10px;border: 1px solid #bdbdbd;border-radius: 2px;">
+								<option value="en">English</option>
+								<option value="sw">Swahili</option>
+							</select>
+						</div>
+                    	<div id="log_message" style="color:red;font-style:italic;"></div>
+                    </form>
+                </div>
+                
+                <div id="version" style="float:right;font-size:10px;font-weight:bold;font-style:italic;padding-right: 20px;">
+                	<span id="spanCurrentDate"></span> - 
+                	<a href="https://docs.google.com/document/d/1P4mqFmuPTTlTtvw211nLm0t28Z5xmN91WXPuTNXIdq0/edit" target="_blank" style="font-size:10px;">
+                		<span id="spanCurrentVersion"></span>
+                	</a>
+                </div>
+            </aside>
+        </section>
+        <section class="nav">
+            <section class='btn_c'>
+            </section>
+            <section class='btn_c'>
+            </section>
+            <section class='btn_c'>
+            </section>
+            <section class='btn_c'>
+            </section>
+            <section id="btn_log" class='btn_c pointer'>
+                <img src='img/btn_cirle_arrow.svg'>
+            </section>
+        </section>
+    </div>
+</body>
+
+<script>
+$( document ).ready( function() 
+{
+	new A360TZApp( "../", function( translationObj, storageObj ) {
+		
+		new LoginForm( translationObj, storageObj );
+	}, "getTranslation");
+});
+
+</script>
+</html>

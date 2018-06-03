@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg8"
+   height="48"
+   viewBox="0 0 12.7 12.7"
+   width="48"
+   version="1.1"
+   sodipodi:docname="switch.svg"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     id="namedview6"
+     showgrid="false"
+     inkscape:zoom="19.66666665"
+     inkscape:cx="-14.65566999"
+     inkscape:cy="20.57356733"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg8" />
+  <title
+     id="title4753">UIO-icon</title>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>UIO-icon</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Joaquín Urbano</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>GPL</dc:title>
+          </cc:Agent>
+        </dc:rights>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <path
+     style="fill:#ffffff;stroke-width:1"
+     d="m 5.755930069,11.62002014 c -1.1913585,-0.13725428 -2.3133122,-0.67869043 -3.15408,-1.52210646 -0.4268759,-0.428220381 -0.7368956,-0.862285011 -1.0069904,-1.409906881 -0.2503142,-0.50751625 -0.4056199,-1.00315446 -0.4975309,-1.5878059 -0.054259,-0.34514273 -0.053164,-1.15439477 0.00204,-1.50677952 0.091435,-0.58367883 0.240662,-1.05982155 0.4958341,-1.58207435 0.5183738,-1.06093959 1.3554686,-1.89791799 2.4165558,-2.41621968 0.5223254,-0.2551366 0.9985344,-0.40434257 1.5822944,-0.4957651 0.3524338,-0.0551946 1.1617984,-0.0562892 1.5069891,-0.002038 1.5426564,0.24244802 2.830789,1.06184773 3.683968801,2.34342559 0.1910901,0.28704017 0.4582815,0.82436358 0.5674745,1.14119449 0.1021302,0.29633757 0.1979467,0.68566813 0.2489304,1.01147711 0.055132,0.35231587 0.055526,1.13506255 7.562e-4,1.50256573 -0.3490266,2.34197474 -2.134886801,4.136285801 -4.480602001,4.501804591 -0.3153413,0.0491378 -1.0309622,0.0607859 -1.3656384,0.0222284 z m 1.0773488,-0.37132903 c 1.1462692,-0.11152732 2.202185,-0.6092857 3.0169249,-1.422177361 1.931204301,-1.92682335 1.921164501,-5.06156424 -0.022331,-6.97251579 -0.4014215,-0.39469963 -0.8104162,-0.68631382 -1.2954615,-0.92366713 -1.873101,-0.91658812 -4.1436475,-0.54461446 -5.6149741,0.91987655 -1.508046,1.5010397 -1.8932915,3.76487626 -0.9634556,5.66159991 0.8979407,1.831662401 2.8617279,2.933185141 4.8792973,2.736883821 z m -1.4802,-2.556384721 c -0.00624,-0.0162536 -0.00846,-0.13966789 -0.00495,-0.27425397 l 0.00639,-0.24470196 1.3875274,-0.0111882 1.3875275,-0.0111882 0.01119,-1.38733448 0.01119,-1.38733448 h 0.2685537 0.2685537 v 1.66703901 1.66703901 l -1.6623233,0.005738 c -1.3606916,0.004697 -1.6643813,3.7534e-4 -1.6736652,-0.0238147 z m -1.3197833,-1.38589645 c -0.0059,-0.0154627 -0.00813,-0.76821217 -0.00495,-1.67277663 l 0.00579,-1.64466265 h 1.6672709 1.6672709 v 1.66703901 1.66703901 l -1.6623233,0.005738 c -1.3179977,0.004549 -1.6645471,-8.567e-5 -1.6730585,-0.02237674 z"
+     id="path827"
+     inkscape:connector-curvature="0" />
+</svg>
