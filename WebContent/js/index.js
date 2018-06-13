@@ -35,6 +35,8 @@ function LoginForm( _translationObj, _storageObj )
 	{
 		me.clear();
 		
+		me.userNameTag.focus();
+		
 		me.storageObj.removeData( Commons.CURRENT_PAGE );
 		me.storageObj.removeData( Commons.EVENTID );
 

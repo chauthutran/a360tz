@@ -1,6 +1,12 @@
 
+	
     function resizeForm( height, width )
 	{
+    	if( height === undefined )
+    	{
+    		height = $(window).height();
+    		width = $(window).width(); 
+    	}
 		var usr_nav = $('#selsr').val();
 		if (usr_nav == 'U303120') {
 			$('header').css('margin-top', '0px');
@@ -9,7 +15,6 @@
 		if (usr_nav == 'U303125') {
 			$('.back_to_session_form_btn img').css('display', 'block');
 			//$('.main').css('display', 'none');
-			$('.mainDiv:visible').find('.session_ic').css('display', 'none');
 			$('.mainDiv:visible').find('.event-body').css('width', '97%');
 		}
 		if (usr_nav == 'U5404685') {
@@ -21,26 +26,40 @@
 		var AvailableWidth = screen.availWidth;
 		var AviableHeight = screen.availHeight;
 		
+//		$(".session_ic tbody").removeAttr("suggestedheight");
+		
 		$('body').css('height', height);
 		
 		
 		setContenedorHeight( height );
 		var mainVisibleHeight = $('.mainDiv:visible').height();
 		alt = $('.mainDiv:visible').find('.form_aside').height();
-		setContenedorHeight( height );
-		
+//		setContenedorHeight( height );
+	    
 		if( $('.mainDiv:visible').hasClass("registration_tag"))
 		{
-			$('.mainDiv:visible').find('.main').hide();
+			$('.mainDiv:visible').find(".data_app_page").css( 'height', '100%' );
+			$("#menu_log").css("margin-top", "0px");
+
+			$("#back_to_session_form_btn").show();
+			$('.main').hide();
 			$('.mainDiv:visible').find('aside').css( 'width', '100%' );
-			$('.mainDiv:visible').find('aside').css( 'padding-left', '0%' );
-			$('.mainDiv:visible').find('aside').css( 'padding-right', '0%' );
-			$('.mainDiv:visible').find('.reg_pad').css('padding-top', '10%');
+			$('.mainDiv:visible').find('aside').css( 'padding-left', '1%' );
+			$('.mainDiv:visible').find('aside').css( 'padding-right', '10px' );
+			// $('.mainDiv:visible').find('.reg_pad').css('padding-top', '10px');
 			
-			if (window.orientation == 0) 
+			$('.rg_cont').css("height", "95%");
+			
+			// if (window.orientation == 0) 
+			if( height > width )
 			{
-				//$("#back_to_session_form_btn").find("img").css("width", "40px");
+				$('header').css("height", "15%");
+				$("#back_to_session_form_btn").find("img").width( $("#switch_view_mode_btn").find("img").width() );
+				$("#back_to_session_form_btn").css("margin-right", "0px");
 				
+				//$("#back_to_session_form_btn").find("img").css("width", "40px");
+				$('header').css("height", "15%");
+				$('.title_usr').css('font-size', '140%');
 				$('#show_search_voucher_form, #show_search_mobile_form, #show_search_client_form').css({
 					'display': 'inline-block',
 					'width': alt / 3.5,
@@ -51,43 +70,66 @@
 			}
 			else
 			{
-				$('.mainDiv:visible').find('.reg_pad').css('padding-top', '0%');
+				$('header').css("height", "20%");
+				
+				$("#back_to_session_form_btn").find("img").width( "30%" );
+				$("#back_to_session_form_btn").css("margin-right", "15px");
+				
+				
+				$('.title_usr').css('font-size', '240%');
+				// $('.mainDiv:visible').find('.reg_pad').css('padding-top', '0%');
 				//$("#back_to_session_form_btn").find("img").css("width", "20px");
 				
 				$('#show_search_voucher_form, #show_search_mobile_form, #show_search_client_form').css({
 					'float': 'left',
 					'width': "20%",
-					'margin-top': '5%',
-					'margin-bottom': '1%',
 					'margin-left': '10%'
 				});
 			}
 		}
 		else
 		{	
-			if (window.orientation == 0) {
-				$('.mainDiv:visible').find('.session_ic tbody').height(mainVisibleHeight / 3);
-				$('.mainDiv:visible').find('.event_p tbody').height(alt - 100);
+			if( $('.mainDiv:visible').attr("id") == "event_participant_div" )
+			{
+				// $('.mainDiv:visible').find(".data_app_page").css( 'height', '80%' );
+			}
+			else
+			{
+				$('.mainDiv:visible').find(".data_app_page").css( 'height', '100%' );
+			}
 			
-				$('.mainDiv:visible').find('.main').hide();
+			$("#back_to_session_form_btn").hide();
+			
+			if( height > width )
+			{
+				$('header').css("height", "15%");
+				$("#menu_log").css("margin-top", "10px");
+				
+//				var session_ic_height = $('.mainDiv:visible').find('.form_aside').height() - $('.mainDiv:visible').find('.session_ia').height() - $('.mainDiv:visible').find('#closed_session_btn').height() - $('#no_active_event_msg').height() - 40;
+//				$('.mainDiv:visible').find('.session_ic tbody').height(session_ic_height);
+				$('.mainDiv:visible').find('.session_ic tbody').height(alt / 1.8);
+				// //$('.mainDiv:visible').find('.event_p tbody').height(alt - 190);
+				
+				var detailEventHeight = $('.mainDiv:visible').find('.form_aside').height() - $('.mainDiv:visible').find('.nav').height() - $("#footer").height() - 60;
+				$('.mainDiv:visible').find('.event_p tbody').height( detailEventHeight );
+				
+				// $('.mainDiv:visible').find('.session_ic tbody').height(mainVisibleHeight / 3);
+
+			
+				$('.main').hide();
 				$('.back_to_session_form_btn img').css('display', 'block');
 				$('.mainDiv:visible').find('.event-body').css('font-size', '100%');
-				$('.title_usr').css('font-size', '140%');
+				
 				$('footer').css('padding-top', '1%');
 				$('.mainDiv:visible').find('aside').css( 'width', '100%' );
-				$('.mainDiv:visible').find('.reg_pad').css('padding-top', '10%');
 				
-				$('.session_ic').css('height', '80px');
 			} else {
-				$('.mainDiv:visible').find('.session_ic tbody').height(mainVisibleHeight / 10);
-				$('.mainDiv:visible').find('.event_p tbody').height(alt - 100);
-			
-			
-				$('.mainDiv:visible').find('.event-body').css('font-size', '100%');
-				$('.title_usr').css('font-size', '240%');
+				$('header').css("height", "20%");
+				$("#menu_log").css("margin-top", "10px");
+				$('.mainDiv:visible').find('.session_ic tbody').height(alt / 3.3);
 				
 				if (width <= 640) {
-					$('.mainDiv:visible').find('.main').hide();
+					$('.main').hide();
 					$('.back_to_session_form_btn img').css('display', 'block');
 						
 					$('.mainDiv:visible').find('aside').css( 'width', '100%' );
@@ -95,40 +137,55 @@
 					$('.mainDiv:visible').find('aside').css( 'padding-right', '10px' );
 						
 				} else {
+					$('.mainDiv:visible').find('.main').show();
 					$('.back_to_session_form_btn img').css('display', 'none');
 
-					$('.mainDiv:visible').find('.main').show();
-					$('.mainDiv:visible').find('.main').css( 'width', '25%' );
-					$('.mainDiv:visible').find('.main').css( 'padding', '0%' );
+					$('.main').css( 'width', '25%' );
+					$('.main').css( 'padding', '0%' );
 						
 					$('.mainDiv:visible').find('aside').css( 'width', '75%' );
-					$('.mainDiv:visible').find('aside').css( 'padding-left', '0%' );
-					$('.mainDiv:visible').find('aside').css( 'padding-right', '0%' );
+					$('.mainDiv:visible').find('aside').css( 'padding-left', '10px' );
+					$('.mainDiv:visible').find('aside').css( 'padding-right', '10px' );
 					
 				}
 				
 				// $('.event-body').css('margin-top', '20px');
-				$('.mainDiv:visible').find('.reg_pad').css('padding-top', '0%');
-				$('.mainDiv:visible').find('.session_ic').css('width', '50px');
+				// $('.mainDiv:visible').find('.reg_pad').css('padding-top', '0%');
+				// $('.mainDiv:visible').find('.session_ic').css('width', '50px');
 			}
+			
+
+			setContenedorHeight( height );
+			
+//			var session_ic_height = $('.mainDiv:visible').find('.form_aside').height() - $('.mainDiv:visible').find('.session_ia').height() - $('.mainDiv:visible').find('#closed_session_btn').height() - 20;
+//			$('.mainDiv:visible').find('.session_ic tbody').height(session_ic_height );
+//			$('.mainDiv:visible').find('.session_ic tbody').height(alt / 3.3);
+			
+			$('.mainDiv:visible').find('.event_p tbody').height(alt - 150);
+			$('.mainDiv:visible').find('.event-body').css('font-size', '100%');
+			
+			
+			Utils.resizeClosedSessionTable( $("#closed_event_list").find("tbody") );
+//			// Utils.resizeClosedSessionTable( $("#event_list").find("tbody") );
 		}
+		
+
 	}
 
 	function setContenedorHeight( height )
 	{
 		var tags = $('.contenedor');
 		var headerHeight = $("header").height();
+		var containerHeight = height - headerHeight - 30
 		for( var i=0;i<tags.length;i++)
 		{
-			$(tags[i]).css('height', height - headerHeight - 30 );
+			$(tags[i]).css('height', containerHeight );
+			$(tags[i]).find(".bg").css("background-size", containerHeight );
 		}			
 	}
 	
 	
 	
-	//var height = $(window).height();
-	//var width = $(window).width();
-		
 	$(window).resize(function () {
 		var height = $(window).height();
 		var width = $(window).width();
@@ -139,7 +196,7 @@
     $(document).ready(function () {
         $(window).bind("orientationchange", function (event) {
             // location.reload();
-			
+        	$(".session_ic tbody").removeAttr("suggestedheight");
 			var height = $(window).height();
 			var width = $(window).width();
 			resizeForm( width, height );// In this case, when we rotate, hight is width, and width is a hight

@@ -100,9 +100,9 @@ function RegistrationMode( _mainPage )
 	        e.preventDefault();
 	        // Commons.blockscreen();
 	        me.passwordTag.val(""); 
-	        me.passwordTag.focus();
 	        me.checkPinErrorMsgTag.css("display", "none");
 	        me.checkPasswordDialogFormTag.css('display', 'block');
+	        me.passwordTag.focus();
 	    });
 		
 	    
@@ -284,7 +284,10 @@ function RegistrationMode( _mainPage )
     			Commons.unblockscreen();
     			me.searchResultFormTag.css("display", "none");
 
-    			me.confirmMessageTag.html("Please try again");
+    			me.confirmMessageFormTag.find(".popup_body").css("height", "45px");
+    			me.confirmMessageFormTag.css("height", "130px");
+    			var message = me.translationObj.getTranslatedValueByKey( "registrationMode1_msg_pleaseTryAgain" );
+    			me.confirmMessageTag.html( message );
     			me.confirmMessageFormTag.css("display", "block");
     			
     		}
@@ -295,7 +298,11 @@ function RegistrationMode( _mainPage )
 	    			me.searchResultFormTag.css("display", "none");
 	    			
 	    			Commons.unblockscreen();
-	    			me.confirmMessageTag.html("Please try again");
+	    			
+	    			me.confirmMessageFormTag.find(".popup_body").css("height", "45px");
+	    			me.confirmMessageFormTag.css("height", "130px");
+	    			var message = me.translationObj.getTranslatedValueByKey( "registrationMode1_msg_pleaseTryAgain" );
+	    			me.confirmMessageTag.html( message );
 	    			me.confirmMessageFormTag.css("display", "block");
     			}
     			else
@@ -335,7 +342,6 @@ function RegistrationMode( _mainPage )
 	    	{
 	    		me.showSearchClientFormBtnTag.click();
 	    	}
-	    	
 		});
 		
 	}
@@ -370,6 +376,7 @@ function RegistrationMode( _mainPage )
 						{
 							Utils.setHashToUrl( Commons.PAGE_SESSION_INFORMATION );
 							Commons.showMainDiv( Commons.sessionInfoDivTag );
+							resizeForm();
 							me.checkPasswordDialogFormTag.hide();
 						}
 						else
@@ -413,7 +420,10 @@ function RegistrationMode( _mainPage )
 
 							var message1 = me.translationObj.getTranslatedValueByKey( "registrationMode1_msg_voucherNotFound" );
 							var message2 = me.translationObj.getTranslatedValueByKey( "registrationMode1_msg_pleaseTryAgain" );
-							me.confirmMessageTag.html( message1 + " " + me.voucherCodeTag.val() + ".\n " + message2 + ".");
+							
+							me.confirmMessageFormTag.find(".popup_body").css("height", "45px");
+			    			me.confirmMessageFormTag.css("height", "130px");
+			    			me.confirmMessageTag.html( message1 + " " + me.voucherCodeTag.val() + ".\n " + message2 + ".");
 			    			me.confirmMessageFormTag.css("display", "block");
 						}
 						else
@@ -481,7 +491,11 @@ function RegistrationMode( _mainPage )
 							var message2 = me.translationObj.getTranslatedValueByKey( "registrationMode1_msg_pleaseTryAgain" );
 							
 					        me.searchMobileForm.css('display', 'none');
-							me.confirmMessageTag.html( message1 + " " + me.mobileNumberTag.val() + ".\n " + message2 + ".");
+							
+
+							me.confirmMessageFormTag.find(".popup_body").css("height", "45px");
+			    			me.confirmMessageFormTag.css("height", "130px");
+			    			me.confirmMessageTag.html( message1 + " " + me.mobileNumberTag.val() + ".\n " + message2 + ".");
 							me.confirmMessageFormTag.css("display", "block");
 						}
 						else
@@ -591,6 +605,8 @@ function RegistrationMode( _mainPage )
 			data.motherName = me.motherNameTag.val();
 			data.birthDistrict = me.birthDistrictTag.val();
 			data.dob = me.dobTag.val();
+			data.gender = 'F';
+			data.age = Utils.calculateAge(data.dob);
 			
 			data.event = {};
 			data.event.eventId =  me.eventId;
@@ -610,7 +626,9 @@ function RegistrationMode( _mainPage )
 	    			}
 					,success: function( response ) 
 					{
-
+						// Update PAX value of selected Event
+					    me.setPAXValue( true );
+					    
 						me.confirmNoClientMsgForm.css("display", "none");
 						
 						Commons.unblockscreen();
@@ -623,7 +641,12 @@ function RegistrationMode( _mainPage )
 						var locationStr = Commons.registrationView1.find("[name='event_details_title']").html().split(", ")[0];
 						var clientName = me.firstNameTag.val() + ", " + me.lastNameTag.val().charAt(0); 
 						var message = message1 + " " + clientName + " " + message2 + " " + locationStr + " " + message3 + ".\n" + message4;
-						alert( message );
+						
+						me.confirmMessageFormTag.find(".popup_body").css("height", "65px");
+		    			me.confirmMessageFormTag.css("height", "150px");
+		    			me.searchResultFormTag.attr( "seachedBy", "thankInfo" );
+		    			me.confirmMessageTag.html( message );
+		    			me.confirmMessageFormTag.css("display", "block");
 						
 					},
 					error: function(a,b,c)
@@ -692,7 +715,12 @@ function RegistrationMode( _mainPage )
 		else
 		{
 			me.searchResultFormTag.css("display", "none");
-			me.confirmMessageTag.html("Please try again.");
+			
+
+			me.confirmMessageFormTag.find(".popup_body").css("height", "45px");
+			me.confirmMessageFormTag.css("height", "130px");
+			var message = me.translationObj.getTranslatedValueByKey( "registrationMode1_msg_pleaseTryAgain" );
+			me.confirmMessageTag.html( message );
 			me.confirmMessageFormTag.css("display", "block");
 		}
 	};
@@ -714,7 +742,6 @@ function RegistrationMode( _mainPage )
 	
 	me.createEvent = function( teiId, checkIn )
 	{
-		
 		
 		// STEP 1. Create Event JSON Data
 		var data = {};
@@ -753,7 +780,13 @@ function RegistrationMode( _mainPage )
 					var locationStr = Commons.registrationView1.find("[name='event_details_title']").html().split(", ")[0];
 					var clientName = me.searchResultTag.find("#teiId").attr( "clientName" ); 
 					var message = message1 + " " + clientName + " " + message2 + " " + locationStr + " " + message3 + ".\n" + message4;
-					alert( message );
+
+
+					me.confirmMessageFormTag.find(".popup_body").css("height", "65px");
+	    			me.confirmMessageFormTag.css("height", "150px");
+	    			me.searchResultFormTag.attr( "seachedBy", "thankInfo" );
+	    			me.confirmMessageTag.html( message );
+	    			me.confirmMessageFormTag.css("display", "block");
 				},
 				error: function(a,b,c)
 				{
@@ -786,9 +819,11 @@ function RegistrationMode( _mainPage )
 	{
 		var title = Commons.eventDetailsTitleTag.html();
 		var eventId = Commons.eventParticipantDivTag.attr("eventId");
-		var arrTitles = ( title.split(" - ")[0] ).split(", ");
+		var eventDate = title.substring( title.lastIndexOf("-") + 2, title.length );
+		var arrInfo = title.substring(0, title.lastIndexOf("-") - 1 ).split(", ");
 		
-		title = arrTitles[0] + ", " + arrTitles[1] + ", " + paxValue + " PAX" + " - " + arrTitles[1] ;
+		
+		title = arrInfo[0] + ", " + arrInfo[1] + ", " + paxValue + " PAX" + " - " + eventDate ;
 		Commons.eventDetailsTitleTag.html( title );
 		Commons.sessionInfoDivTag.find("tr[eventId='" + eventId + "']").attr( "pax", paxValue );
 		Commons.sessionInfoDivTag.find("tr[eventId='" + eventId + "']").find("td:nth-child(2)").html( title );

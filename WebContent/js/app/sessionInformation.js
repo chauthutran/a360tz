@@ -166,12 +166,8 @@ function Event( _translationObj, _storageObj )
 		   var oldURL = e.oldURL.split('#')[1];
 		   var newURL = e.newURL.split('#')[1];
 
-		   if( newURL == oldURL )
+		   if( newURL == Commons.PAGE_SESSION_INFORMATION )
 		   {
-			   
-		   }
-		  else if( newURL == Commons.PAGE_SESSION_INFORMATION )
-		  {
 			  if( oldURL == Commons.PAGE_SESSION_INFORMATION )
 			  {
 				  window.location.href = "index.html";
@@ -270,7 +266,8 @@ function Event( _translationObj, _storageObj )
         me.addEventFormTag.css({
           'display': 'block'
         });
-        
+
+		me.eventDateTag.focus();
 	}
 	
 	
@@ -321,8 +318,11 @@ function Event( _translationObj, _storageObj )
 //						me.activeEventListTableTag.closest("table").show();
 						me.noActiveEventMsgTag.hide();
 					}
+
+					Utils.resizeClosedSessionTable( me.closedEventListTbodyTag );
 					
 					me.closedEventListTbTag.hide();
+					
 					
 					me.loadCurPage();
 					
@@ -424,7 +424,6 @@ function Event( _translationObj, _storageObj )
 		});
 		
 	};
-	
 	
 	// -------------------------------------------------------------------------
 	// Event methods

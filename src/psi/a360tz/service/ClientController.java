@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.SystemUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -41,6 +42,8 @@ public class ClientController extends HttpServlet {
 			+ "&filter=" + Utils.ID_ATTR_PHONENUMBER + ":eq:" + ClientController.PARAM_SEARCH_VALUE;
 
 	private static final String URL_GET_CLIENT_BY_ID = Utils.LOCATION_DHIS_SERVER + "/api/trackedEntityInstances/" + ClientController.PARAM_CLIENT_ID + ".json?fields=*";
+	
+	private static final String URL_UPDATE_CLIENT = Utils.LOCATION_DHIS_SERVER + "/api/trackedEntityInstances/";
 	
 	private static final String URL_QUERY_SEARCHBY_CLIENTINFO = Utils.LOCATION_DHIS_SERVER + "/api/trackedEntityInstances/query.json?ou=" + ClientController.PARAM_SEARCH_ORGUNITID + "&ouMode=ALL&program=" + Utils.ID_PROGRAM_CLIENT 
 			+ "&filter=" + Utils.ID_ATTR_FIRSTNAME + ":LIKE:" + ClientController.PARAM_SEARCH_FIRSTNAME_VALUE
@@ -267,7 +270,7 @@ public class ClientController extends HttpServlet {
         try
         {
         	JSONObject enrollmentData = ClientController.getEnrollmentJson( teiId, orgUnitId );
-     System.out.println("\n\n === \n enrollmentData : " + enrollmentData.toString() );   	
+
             String requestUrl = ClientController.URL_ENROLLMENT_TEI;
             responseInfo = Utils.sendRequest( Utils.REQUEST_TYPE_POST, requestUrl, enrollmentData, null );
         }
@@ -339,6 +342,18 @@ public class ClientController extends HttpServlet {
 		dobValue.put("attribute", Utils.ID_ATTR_DOB);
 		dobValue.put("value", attributeData.getString("dob"));
 		attributeValues.put( dobValue );
+
+		// Gender
+		JSONObject genderValue = new JSONObject();
+		genderValue.put("attribute", Utils.ID_ATTR_GENDER );
+		genderValue.put("value", attributeData.getString("gender"));
+		attributeValues.put( genderValue );
+
+		// Age
+		JSONObject ageValue = new JSONObject();
+		ageValue.put("attribute", Utils.ID_ATTR_AGE );
+		ageValue.put("value", attributeData.getInt("age") );
+		attributeValues.put( ageValue );
 		
 		
 		// Create Client Json Data
@@ -346,6 +361,7 @@ public class ClientController extends HttpServlet {
 		clientData.put( "trackedEntity", Utils.ID_TRACKED_ENTITY_CIENT );
 		clientData.put( "orgUnit", orgUnitId );
 		clientData.put( "attributes", attributeValues );
+		
 		
 		return clientData;
 	}

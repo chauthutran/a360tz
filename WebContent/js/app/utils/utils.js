@@ -204,6 +204,56 @@ Utils.tableSorter = function( table, sortList )
 };
 
 
+Utils.resizeClosedSessionTable = function( tbodyTag )
+{
+	var rowNo = tbodyTag.find("tr").length;
+	if( rowNo > 0 )
+	{
+		var hiddenMainDiv = tbodyTag.closest(".mainDiv").css('display');
+		var hiddenTable = tbodyTag.closest("table").css('display');
+		tbodyTag.closest(".mainDiv").css('visibility','hidden');
+		tbodyTag.closest(".mainDiv").css('display','block');
+		
+		tbodyTag.closest("table").css('visibility','hidden');
+		tbodyTag.closest("table").css('display','block');
+		
+		var suggestedHeight = tbodyTag.attr( "suggestedHeight" );
+		var tbodyHeight = tbodyTag.height();
+		if( suggestedHeight == undefined )
+		{
+			tbodyTag.attr( "suggestedHeight", tbodyHeight );
+			suggestedHeight = tbodyHeight;
+		}
+		var rowHeight = tbodyTag.find("tr:first").height();
+		var realHeight = rowHeight * rowNo;
+		
+//		var tbodyHeight = tbodyTag.height();
+//		if( height < tbodyHeight )
+//		{
+////			tbodyTag.attr( "suggestedHeight", tbodyHeight );
+////			tbodyTag.css( "height", height );
+//		}
+		if( realHeight < suggestedHeight )
+		{
+//				tbodyTag.attr( "suggestedHeight", tbodyHeight );
+				tbodyTag.css( "height", realHeight );
+//				tbodyTag.css( "overflow-x", "auto" );
+		}
+		else
+		{
+			tbodyTag.css( "height", suggestedHeight );
+//			tbodyTag.css( "overflow-x", "scroll" );
+		}
+
+		tbodyTag.closest(".mainDiv").css('visibility', 'visible');
+		tbodyTag.closest(".mainDiv").css('display', hiddenMainDiv);
+
+		tbodyTag.closest("table").css('visibility', 'visible');
+		tbodyTag.closest("table").css('display', hiddenTable);
+	}
+	
+};
+
 Utils.calculateAge = function( birthDateStr )
 {
 	var today = new Date();

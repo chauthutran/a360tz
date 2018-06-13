@@ -3,7 +3,8 @@
 function EventParticipant( _mainPage )
 {
 	var me = this;
-
+	me.mainPage = _mainPage;
+	
 	me.translationObj = _mainPage.translationObj;
 	me.validationObj = _mainPage.validationObj;
 	me.registrationMode = _mainPage.registrationMode;
@@ -53,43 +54,40 @@ function EventParticipant( _mainPage )
 			
 			me.loadEventParticipantList( function(){
 
+				var eventLockedStatus = me.lockEventObj.checkEventLocked( me.eventData );
+				Commons.eventParticipantDivTag.attr("locked", eventLockedStatus );
+				Commons.eventParticipantDivTag.attr("eventId", me.eventId );
+				
+		        if( eventLockedStatus == me.lockEventObj.EVENT_STATUS_EXPIRED 
+						|| eventLockedStatus == me.lockEventObj.EVENT_STATUS_LOCK 
+						||  me.eventData.status == "COMPLETED" )
+		        {
+		        	me.showRegistrationPageTag.css("background-color", "#dcdcdc");
+		        	me.selectedEventStatusTag.addClass("complete_status");
+		        	me.completedBtnTag.hide();
+		        }
+		        else
+		        {
+		        	me.showRegistrationPageTag.css("background-color", "white");
+		        	me.selectedEventStatusTag.addClass("active_event_status");
+					me.completedBtnTag.show();
+	        	}
+		        
+	
+		        Utils.setHashToUrl( Commons.PAGE_EVENT_PARTICIPANT_LIST );
+	
+				// Load current page if user refreshes page
 		        var curPage = me.storageObj.getData( Commons.CURRENT_PAGE );
-				if( curPage == Commons.PAGE_EVENT_PARTICIPANT_LIST )
-				{
-					me.storageObj.removeData( Commons.CURRENT_PAGE );
-					me.storageObj.removeData( Commons.EVENTID );
-				}
-				else if( curPage == Commons.PAGE_REGISTRATION_VIEW_1 )
+				if( curPage == Commons.PAGE_REGISTRATION_VIEW_1 )
 				{
 			        me.showRegistrationPageTag.click();
-			        me.storageObj.removeData( Commons.CURRENT_PAGE );
-					me.storageObj.removeData( Commons.EVENTID );
 				}
 
-				me.storageObj.addData( Commons.EVENTID, Commons.eventParticipantDivTag.attr("eventId") );
+		        
+				me.storageObj.addData( Commons.CURRENT_PAGE, Commons.PAGE_EVENT_PARTICIPANT_LIST );
+				me.storageObj.addData( Commons.EVENTID, me.eventId );
 			});
-			
-			var eventLockedStatus = me.lockEventObj.checkEventLocked( me.eventData );
-			Commons.eventParticipantDivTag.attr("locked", eventLockedStatus );
-			Commons.eventParticipantDivTag.attr("eventId", me.eventId );
-			
-	        if( eventLockedStatus == me.lockEventObj.EVENT_STATUS_EXPIRED 
-					|| eventLockedStatus == me.lockEventObj.EVENT_STATUS_LOCK 
-					||  me.eventData.status == "COMPLETED" )
-	        {
-	        	me.selectedEventStatusTag.addClass("complete_status");
-	        	me.completedBtnTag.hide();
-	        }
-	        else
-	        {
-				me.selectedEventStatusTag.addClass("active_event_status");
-				me.completedBtnTag.show();
-        	}
-
-	        Utils.setHashToUrl( Commons.PAGE_EVENT_PARTICIPANT_LIST );
-	        
-			me.storageObj.addData( Commons.EVENTID, Commons.eventParticipantDivTag.attr("eventId") );
-			
+		
 		});
 		
 	};
@@ -99,7 +97,10 @@ function EventParticipant( _mainPage )
 		me.backToSessionBtnTag.click( function (e) {
 	        e.preventDefault();
 	        Utils.setHashToUrl( Commons.PAGE_SESSION_INFORMATION );
+
 			Commons.showMainDiv( Commons.sessionInfoDivTag );
+	    	resizeForm(); // Call from screenPage.js
+	    	Utils.resizeClosedSessionTable( me.closedEventListTbodyTag )
 	    });
 
 		me.completedBtnTag.click( function(e){
@@ -110,7 +111,7 @@ function EventParticipant( _mainPage )
 		
 		me.showDeleteAllParticipantDialogBtn.click( function(e){
 	        e.preventDefault();
-	        var eventLockedStatus =  Commons.eventParticipantDivTag.attr("locked");
+	        var eventLockedStatus = Commons.eventParticipantDivTag.attr("locked");
 	        if( eventLockedStatus == me.lockEventObj.EVENT_STATUS_EXPIRED 
 					|| eventLockedStatus == me.lockEventObj.EVENT_STATUS_LOCK )
 	        {
@@ -168,8 +169,7 @@ function EventParticipant( _mainPage )
 
 		me.closeAllParticipantDialogBtnTag.click( function (e) {
 	        e.preventDefault();
-	        $('.dialog').css('display', 'none');
-	        $('.popup').css('display', 'block');
+	        me.deleteAllEventsDialog.css('display', 'none');
 	    });
 		
 		me.showRegistrationPageTag.click( function () {
@@ -182,7 +182,7 @@ function EventParticipant( _mainPage )
 			}
 			else
 			{
-		        var eventId = Commons.eventParticipantDivTag.attr("eventId");
+				var eventId = Commons.eventParticipantDivTag.attr("eventId");
 		        me.registrationMode.setData( eventId );
 		        Commons.showMainDiv( Commons.registrationView1 );
 				
@@ -228,8 +228,11 @@ function EventParticipant( _mainPage )
 						me.populateDataInRow( rows[i], i + 1 );
 					}
 					
+					// Utils.resizeClosedSessionTable( me.tableListTag );
+					
+					
 					// Check if we need to update PAX value of selected event
-					var paxVal = eval( Commons.sessionInfoDivTag.find("tr[event='" + eventId + "']").attr("pax") );
+					var paxVal = eval( Commons.sessionInfoDivTag.find("tr[eventId='" + eventId + "']").attr("pax") );
 					if( paxVal !== rows.length )
 					{
 						me.updateEventPAX(eventId, rows.length,function(){
@@ -242,15 +245,19 @@ function EventParticipant( _mainPage )
 							
 							Commons.showMainDiv( Commons.eventParticipantDivTag );
 							MsgManager.appUnblock();
+							
+							if( exeFunc !== undefined ) exeFunc();
 						});
 					}
 					else
 					{
 						Commons.showMainDiv( Commons.eventParticipantDivTag );
 						MsgManager.appUnblock();
+						
+						if( exeFunc !== undefined ) exeFunc();
 					}
 					
-					if( exeFunc !== undefined ) exeFunc();
+					
 			       
 				}
 			}).always( function( data ) {
@@ -372,11 +379,18 @@ function EventParticipant( _mainPage )
 						eventData.completedDate = Utils.getTodayStr();
 						rowTag.attr("eventData", JSON.stringify( eventData ) );
 						me.setUp_Event_A360EventRow( rowTag );
+						me.eventData = eventData;
+						Commons.eventParticipantDivTag.attr("locked", me.lockEventObj.EVENT_STATUS_OPEN );
 						me.closedEventListTbodyTag.prepend( rowTag );
 
 						me.showRegistrationPageTag.css('pointer-events', "none" );
 						
 						me.completedBtnTag.hide();
+						
+						me.mainPage.noActiveEventMsgTag.show();
+						
+						// resizeForm( height, width ); // Call from screenPage.js
+						// Utils.resizeClosedSessionTable( me.mainPage.closedEventListTbodyTag );
 						
 					}
 				}).always( function( data ) {
@@ -392,9 +406,7 @@ function EventParticipant( _mainPage )
 		rowTag.find("td").click( function (e) {
 	        e.preventDefault();
 			Commons.showMainDiv( Commons.eventParticipantDivTag );
-	        var height = $(window).height();
-			var width = $(window).width();
-			resizeForm( height, width ); // Call from screenPage.js
+	        resizeForm( ); // Call from screenPage.js
 		
 	        var eventData = rowTag.attr("eventData"); 
 	        var eventTitle = rowTag.find("td:nth-child(2)").html();
@@ -405,7 +417,6 @@ function EventParticipant( _mainPage )
 	
 	me.deleteEvent = function( eventId, execFunc )
 	{
-		var eventRowTag = me.tableListTag.find("tr[eventId='" + eventId + "']");
 		
 		Commons.runAjax( function(){
 			$.ajax(
@@ -420,7 +431,36 @@ function EventParticipant( _mainPage )
         		}
 				,success: function( response ) 
 				{
-					eventRowTag.remove();
+					var eventRowTag = me.tableListTag.find("tr[eventId='" + eventId + "']");
+					if( eventRowTag.length == 0 )
+					{
+						// For A360 Event only
+						eventRowTag = Commons.sessionInfoDivTag.find("tr[eventId='" + eventId + "']");
+						var eventStatus = JSON.parse( eventRowTag.attr("eventData") );
+						if( eventStatus.status == "ACTIVE" )
+						{
+							me.mainPage.noActiveEventMsgTag.show();
+						}
+						
+						eventRowTag.remove();
+					}
+					else
+					{
+						// Update the # ( number ) in the first columns of participant list
+
+						eventRowTag.remove();
+						var rowTags = me.tableListTag.find("tr");
+						var rowLen = me.tableListTag.find("tr").length;
+						var idx = 0;
+						me.tableListTag.find("tr").each(function(){
+							var rowTag = $(this);
+							rowTag.find("td:first").html( rowLen - idx );
+							idx++;
+						});
+					}
+					
+
+					// Utils.resizeClosedSessionTable( me.tableListTag );
 					
 					if( execFunc !== undefined ) execFunc();
 					

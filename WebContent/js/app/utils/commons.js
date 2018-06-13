@@ -2,8 +2,8 @@
 
 function Commons() {}
 
-Commons.VERSION = "v 0.2.2";
-Commons.BUILD_DATE = "Jun 02, 20018";
+Commons.VERSION = "v 1.0";
+Commons.BUILD_DATE = "Jun 13, 20018";
 
 
 Commons.CURRENT_PAGE = "curPage";
@@ -62,7 +62,7 @@ Commons.registrationView1 = $("#registration_view_1");
 Commons.registrationView2 = $("#registration_view_2");
 
 Commons.bodyTag = $("body");
-Commons.footerTag = $("footer");
+Commons.footerTag = $("#footer");
 
 
 Commons.showMainDiv = function( divTag )

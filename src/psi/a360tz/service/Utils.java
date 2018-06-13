@@ -93,6 +93,8 @@ public final class Utils {
     public static final String ID_ATTR_MOTHERNAME = "ZWAKgo9UfZk";
     public static final String ID_ATTR_BIRTHDISTRICT = "pL3gzBBWOhh";
     public static final String ID_ATTR_DOB = "wSp6Q7QDMsk";
+    public static final String ID_ATTR_GENDER = "JcGai6pHG1M";
+    public static final String ID_ATTR_AGE = "JM9qqwDihBV";
     
     
 

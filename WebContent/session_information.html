@@ -27,7 +27,7 @@
 
 <header class="bk_pineapple" id="event_header" class="event_tag">
     <div class="back_to_session_form_btn">
-        <img src='img/kuwa_mjanja_logo_white_48.svg' style='display:none;'>
+        <img src='img/kuwa_mjanja_logo_white_48.svg' style='display:none;width: 100%;height: 100%;'>
     </div>
     <div id="header_2" class="title_adm">
         KUWA MJANJA
@@ -37,7 +37,7 @@
 
 <header class="bk_mint" id="registration_participant_header" style="display:none;" class="registration_tag">
     <div class="back_to_session_form_btn">
-        <img src='img/kuwa_mjanja_logo_white_48.svg' style='display:none;'>
+        <img src='img/kuwa_mjanja_logo_white_48.svg' style='display:none;width: 100%;height: 100%;'>
     </div>
     <div id="header_2" class="title_usr" style="width: 60%; font-size: 240%;">
         Karibu Kuwa Mjanja
@@ -112,14 +112,19 @@
                   <!-- --------------------------------------------------- -->
 				  <!--  Message No any active A360 Events  -->
 
-                  <div id="no_active_event_msg" style="display:none;font-style:italic;text-align:left;" keyword="sessionInformation_msg_noActiveEventExist">No active events exist. Create a new event by pressing the plus button</div>
+                  <div id="no_active_event_msg" style="display:none;font-style:italic;text-align:left;" >
+                  	<span keyword="sessionInformation_msg_noActiveEventExist">No active events exist. Create a new event by pressing the plus button</span>
+                  	<div id="add_new_event_btn" class='pointer' style="float:right;">
+			            <img src='img/btn_add.svg'>
+			        </div>
+                  </div>
                   
                   
                   <!-- --------------------------------------------------- -->
 			      <!--  List of CLOSED A360 Events  -->
                  
                   <div id='closed_session_btn' class='pointer'>
-                      <img id="closed_session_icon" src='img/contract.svg'>
+                      <img id="closed_session_icon" src='img/contract.svg' style="width:40px;">
                       <label id="closed_session_title" class="pointer" keyword="sessionInformation_closedTable_header" style="width:60%;">Closed Sessions</label>
                   </div>
                   
@@ -141,29 +146,6 @@
 	<!-- ------------------------------------------------------------------- -->
 
 
-
-
-	<!-- ------------------------------------------------------------------- -->
-	<!--  Add A360 Event button  -->
-
-    <section class="nav">
-		<section class="btn_c">
-        </section>
-        <section class="btn_c">
-        </section>
-        <section class="btn_c">
-        </section>
-        <section class="btn_c">
-        </section>
-        <section id="add_new_event_btn" class='btn_c pointer'>
-            <img src='img/btn_add.svg'>
-        </section>
-    </section>
-    
-	<!--  END - Add A360 Event button  -->
-	<!-- ------------------------------------------------------------------- -->
-    
-    
     
 	<!-- ------------------------------------------------------------------- -->
 	<!--  Add a360 Event FORM  -->
@@ -186,7 +168,9 @@
 	            <option value='KM-PC'>KM - Parents’ Clinic</option>
 	        </select></div>
 	        <div><p>Location <span class='required'>*</span> </p>
-	        <input type='text' id='event_location' class='input_screen' deId="yJH6o6I2gsQ" mandatory="true" autocomplete="off"></div>
+	        
+	        <input type="text" deid="yJH6o6I2gsQ" class="input_seach_form" mandatory="true" minlength="2" style="font-size: 100%; padding: 5px; border: 1px solid rgb(189, 189, 189); width: 100%; border-radius: 2px; box-sizing: border-box;">
+	        </div>
 	    </div>
 	    <br><br>
 	    <div class="popup_foot">
@@ -236,12 +220,12 @@
         </section>
         <aside>
             <div class='form_aside'>
-                <div class='event-body'>
+                <div class='event-body' style="padding-bottom: 10px;">
 					<span name='event_details_title'></span>
 					<div id='complete_btn' class='pointer complete_btn'></div>
 					<div id="selected_event_status">&nbsp;</div>
 				</div>
-				<table id="event_list" class="event_p">
+				<table id="event_list" class="event_p" style="padding-right:10px;">
 					<thead>
 						<tr>
 							<th class="width_ct1_ep"></th>
@@ -254,6 +238,39 @@
 					</thead>
 					<tbody></tbody>
 				</table>
+				
+				
+				
+	<!-- ------------------------------------------------------------------- -->
+	<!--  Footer BUTTONS -->
+	 
+				<table class="nav" style="width: 100%;">
+			        
+			       <tr style="width: 100%;">
+				        <!--  Back to Session Information -->
+				        <td id="back_to_session" class="event_button pointer" style="pointer-events: auto;/* width: 30%; */">
+				            Event list
+				        </td>
+			        
+				        <!--  Open Registration Event participant page -->
+				        <td id="close_registration" class="event_button pointer" style="pointer-events: auto;width: 30%;">
+				            Registration
+				        </td>
+			        
+				        <!--  Delete all Event participants in list and delete A360 event -->
+				        <td id="del_event" class="event_button pointer" style="pointer-events: auto;width: 30%;">
+				           Delete
+				        </td>
+			   	 	</tr>
+				</tbody>
+			</table>
+			
+    
+	<!--  Footer BUTTONS -->
+	<!-- ------------------------------------------------------------------- -->
+	   
+	   
+							
             </div>
         </aside>
     </section>
@@ -262,37 +279,6 @@
 	<!-- ------------------------------------------------------------------- -->
     
     
-	<!-- ------------------------------------------------------------------- -->
-	<!--  Footer BUTTONS -->
-	
-    <section class="nav">
-        <section class="btn_c">
-        </section>
-        
-		<section class="btn_c">
-        </section>
-		
-        <!--  Back to Session Information -->
-        <section id="back_to_session" class='btn_c pointer'>
-            <img src='img/btn_cirle_back.svg'>
-        </section>
-        
-        <!--  Open Registration Event participant page -->
-        <section id="close_registration" class='btn_c pointer'>
-            <img src='img/close_registration.svg'>
-        </section>
-        
-        <!--  Delete all Event participants in list and delete A360 event -->
-        <section id="del_event" class='btn_c pointer'>
-            <img src='img/btn_cirle_del.svg'>
-        </section>
-        
-    </section>
-    
-	<!--  Footer BUTTONS -->
-	<!-- ------------------------------------------------------------------- -->
-	   
-	   
 	   
   	<!-- ------------------------------------------------------------------- -->
 	<!--  Delete ALL event Dialog -->
@@ -339,12 +325,12 @@
 	<!-- ------------------------------------------------------------------- -->
 	<!--  List of Registration BUTTONS -->
 	
-    <section class='rg_cont'>
+    <section class='rg_cont data_app bg'>
         <section class='main rg_main'>
             <img src='img/kuwa_mjanja_logo_white_48.svg'>
         </section>
         <aside class="rg_aside">
-            <div name='event_details_title' class='event-body'></div>
+            <div name='event_details_title' class='event-body' style="text-align: center;"></div>
             <div class='form_aside reg_pad'>
 	
 	<!--  BUTTON - Search by Voucher -->
@@ -382,7 +368,7 @@
 	    </div>
 	    <div class="popup_body">
 	    	<p keyword="registrationView1_msg_enterPinToExitMode">To exit registration mode, enter your PIN</p>
-	       	<input type='password' id='pin_pass' class="input_seach_form" style="padding-left: 10px;" autocomplete="off" maxlength="4" mandatory="true">
+	       	<input type='password' pattern="[0-9]*" inputmode="numeric" id='pin_pass' class="input_seach_form" style="padding-left: 10px;" autocomplete="off" maxlength="4" mandatory="true">
 	       	<div id='check_pin_error_msg' style='color:red;display:none;' keyword="registrationView1_msg_wrongPin">Wrong PIN!!</div>
 	    </div>
 	    <div class="popup_foot">
@@ -472,7 +458,7 @@
 	        <div><input type='number' id='voucher_code' number="true" length="8,10" mandatory="true" style="font-size: 100%; height: 40px; padding: 5px; border: 1px solid rgb(189, 189, 189); width: 100%; border-radius: 2px; box-sizing: border-box;"></div>
 	    </div>
 	    <div class="popup_foot">
-	        <div class="popup_foot_left" id="search_by_voucher" keyword="common_btn_search">Search</div>
+	        <div class="popup_foot_left" id="search_by_voucher" keyword="common_btn_ok">Ok</div>
 	        <div class="popup_foot_right" id="cancel_search_by_voucher" keyword="common_btn_cancel">Cancel</div>
 	    </div>
 	</div>
@@ -489,10 +475,10 @@
 	    </div>
 	    <div class="popup_body" >
 	        <p keyword="searchByMobile_enterPhoneNumber">Enter your mobile number</p>
-	        <div><input type='text' id='mobile_number' class="input_seach_form" phonenumber="true" mandatory="true"></div>
+	        <div><input type='tel' id='mobile_number' class="input_seach_form" phonenumber="true" mandatory="true"></div>
 	    </div>
 	    <div class="popup_foot">
-	        <div class="popup_foot_left" id="search_by_mobile" keyword="common_btn_search">Search</div>
+	        <div class="popup_foot_left" id="search_by_mobile" keyword="common_btn_ok">Ok</div>
 	        <div class="popup_foot_right" id="cancel_search_by_mobile" keyword="common_btn_cancel">Cancel</div>
 	    </div>
 	</div>
@@ -516,15 +502,11 @@
 	        <div><input type='date' id='date_of_birth' class="input_seach_form" mandatory="true" minlength="2"></div>
 	    </div>
 	    <div class="popup_foot">
-	        <div class="popup_foot_left" id="seach_by_client_btn" keyword="common_btn_search">Search</div>
+	        <div class="popup_foot_left" id="seach_by_client_btn" keyword="common_btn_ok">Ok</div>
 	        <div class="popup_foot_right" id="cancel_seach_by_client_btn" keyword="common_btn_cancel">Cancel</div>
 	    </div>
 	
 	</div>
-	
-	<div id="back_to_session_form_btn" class="pointer" style="float:right;width:20%;box-sizing:border-box;">
-        <img src='img/er.svg' style="width:40%;float:right;">
-    </div>
 	
 </div>
 
@@ -600,13 +582,21 @@
 <!-- ======================================================================= -->
 <!--  Footer  -->
    
-<footer class="bk_pineapple">
-    <div id="menu_log">
+
+<div id="footer" class="bk_pineapple" style="color:white;position:absolute;bottom:0px;width:100%;">
+    <div id="menu_log" style="margin-top:10px;">
         [<label id='orgunit_code'></label>]
         <label id='orgunit_name'></label>
-        <a href="index.html" style="color: white;">[<label id="logout_btn" style="padding-left:10px;cursor:pointer;" keyword="common_logout">Logout</label>]</a>
+        <a href="index.html" style="color: white;">[<label id="logout_btn" style="padding-left:10px;cursor:pointer;" keyword="common_logout">Logout</label> ]</a>
+		
+		
+		<div id="back_to_session_form_btn" class="pointer" style="float:right;width:20%;box-sizing:border-box;margin-top:-10px;display:none;">
+			<img src='img/er.svg' style="width:40%;float:right;">
+		</div>
+		
     </div>
-</footer>
+</div>
+  
   
 <!--  END - Footer  --> 
 <!-- ======================================================================= -->

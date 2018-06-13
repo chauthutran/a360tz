@@ -26,15 +26,29 @@ $(function () {
 			$('.contenedor').css('height', '100%');
 			alt = $('.form_aside').height();
 			
-			
-			if (window.orientation == 0) {
-				$('.main').hide();
+			if( height > width )
+			{
+//				$('.main').hide();
 				$('.contenedor').css('height', height);
 				$('.title_usr').css('font-size', '140%');
 				$('footer').css('padding-top', '1%');
-				$('aside').css({
-					'width': '100%'
-				});
+//				$('aside').css({
+//					'width': '100%'
+//				});
+				
+				if (width <= 640) {
+					$('.main').hide();
+					$('aside').css("width", "100%");
+					$('aside').css( "padding", "0%");
+					
+				} else {
+					$('.main').show();
+					$('.main').css("width", "15%");
+					$('.main').css('padding', '0%');
+					
+					$('aside').css("width", "75%");
+					$('aside').css( "padding", "0%");
+				}
 				
 			} else {
 				$('.contenedor').css('height', height);
@@ -47,8 +61,8 @@ $(function () {
 					
 				} else {
 					$('.main').show();
-					$('main').css("width", "25%");
-					$('main').css('padding', '0%');
+					$('.main').css("width", "15%");
+					$('.main').css('padding', '0%');
 					
 					$('aside').css("width", "75%");
 					$('aside').css( "padding", "0%");
