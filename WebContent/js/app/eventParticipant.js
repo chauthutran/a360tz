@@ -183,7 +183,7 @@ function EventParticipant( _mainPage )
 			else
 			{
 				var eventId = Commons.eventParticipantDivTag.attr("eventId");
-		        me.registrationMode.setData( eventId );
+		        me.registrationMode.setData( me.eventData );
 		        Commons.showMainDiv( Commons.registrationView1 );
 				
 				var height = $(window).height();

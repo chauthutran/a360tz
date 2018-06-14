@@ -81,11 +81,12 @@ function RegistrationMode( _mainPage )
 		me.setupEvents();
 	};
 	
-	me.setData = function( _eventId )
+	me.setData = function( _eventData  )
 	{
         me.checkPasswordDialogFormTag.css('display', 'none');
         Utils.setHashToUrl( Commons.PAGE_REGISTRATION_VIEW_1 );
-		me.eventId = _eventId;
+        me.eventData = _eventData;
+		me.eventId = me.eventData.event;
 		me.clientSearchList = [];
 		me.processingCliendIdx = -1;
 	};
@@ -749,6 +750,20 @@ function RegistrationMode( _mainPage )
 		data.eventId =  me.eventId;
 		data.teiId = teiId;
 		data.checkIn = checkIn;
+
+//		 When 'event type' selected is "KM - Parent's clinic" at creating a new group session, 
+//		 the associated events created in CwS should have the 'program' data value set to "FPL-A360-PAR"
+//		 - In all the other cases, 'program' should be set to "FPL-A360-ADO"
+		var eventType = Commons.getDEValue( me.eventData.dataValues, Commons.DEID_A360_EventType );
+		if( eventType == "KM-PC" )
+		{
+			data.program = "FPL-A360-PAR";
+		}
+		else
+		{
+			data.program = "FPL-A360-ADO";
+		}
+		
 		
 		// STEP 2. Create Event
 		Commons.runAjax( function(){

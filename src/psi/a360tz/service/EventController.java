@@ -323,13 +323,14 @@ public class EventController extends HttpServlet
         	String eventId = requestData.getString( "eventId" ); // A360 EVENT ID
         	String teiId = requestData.getString( "teiId" );
         	String checkIn = requestData.getString( "checkIn" );
+        	String program = requestData.getString( "program" );
         	
         	ResponseInfo responseInfo_Event = EventController.getEvent( eventId );
         	if( responseInfo_Event.responseCode == 200 )
         	{
-        		JSONObject eventParticipant = EventController.composeJsonEventParticipant( checkIn, teiId, responseInfo_Event.data );
+        		JSONObject eventParticipant = EventController.composeJsonEventParticipant( checkIn, teiId, program, responseInfo_Event.data );
         		responseInfo = EventController.createEvent( eventParticipant );
-        		
+
         		if( responseInfo.responseCode == 200 )
         		{
         			JSONObject eventData = EventController.setEventParticipantValue( responseInfo_Event.data, true, ""  );
@@ -373,7 +374,7 @@ public class EventController extends HttpServlet
         return eventData;
     }
     
-    private static JSONObject composeJsonEventParticipant( String checkIn, String teiId, JSONObject eventData )
+    private static JSONObject composeJsonEventParticipant( String checkIn, String teiId, String program, JSONObject eventData )
     {
     	JSONObject eventParticipantData = new JSONObject();
     	
@@ -408,7 +409,12 @@ public class EventController extends HttpServlet
     	dataValue3.put( "dataElement", Utils.ID_DE_TZA360_EVENTID );
     	dataValue3.put( "value", eventData.getString("event") );
 		dataValues.put( dataValue3 );
-		
+
+    	// DE Program
+    	JSONObject dataValue4 = new JSONObject();
+    	dataValue4.put( "dataElement", Utils.ID_DE_PARTICIPANTS_PROGRAM );
+    	dataValue4.put( "value", program );
+		dataValues.put( dataValue4 );
 		
 		eventParticipantData.put( "program", Utils.ID_PROGRAM_CLIENT );
 		eventParticipantData.put( "programStage", Utils.ID_PROGRAMSTAGE_TRANSACTION );

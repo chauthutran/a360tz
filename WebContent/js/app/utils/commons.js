@@ -3,7 +3,7 @@
 function Commons() {}
 
 Commons.VERSION = "v 1.0";
-Commons.BUILD_DATE = "Jun 13, 20018";
+Commons.BUILD_DATE = "Jun 14, 20018";
 
 
 Commons.CURRENT_PAGE = "curPage";
@@ -45,6 +45,26 @@ Commons.DEID_A360_EventType = "PjP2gCDbAmu";
 Commons.DEID_A360_Location = "yJH6o6I2gsQ";
 Commons.DEID_A360_Participants = "jwVaTNV9nnI";
 Commons.DEID_A360_DaughterNo = "Cdc5xGAUuxt";
+
+
+//-------------------------------------------------------------------------
+// Commons methods
+
+
+Commons.getDEValue = function( dataValues, attrId )
+{
+	for( var i in dataValues )
+	{
+		var deId = dataValues[i].dataElement;
+		var value = dataValues[i].value;
+		if( deId == attrId )
+		{
+			return value;
+		}
+	}
+	
+	return "";
+};
 
 
 //-------------------------------------------------------------------------

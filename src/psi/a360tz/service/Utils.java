@@ -85,6 +85,7 @@ public final class Utils {
     public static final String ID_DE_CHECKIN = "HzngfV7q0J5";
     public static final String ID_DE_EVENTTYPE = "PjP2gCDbAmu";
     public static final String ID_DE_TZA360_PARTICIPANTS = "jwVaTNV9nnI";
+    public static final String ID_DE_PARTICIPANTS_PROGRAM = "PmTQIkFdbUO";
     
     public static final String ID_ATTR_VOUCHERCODE = "RJO3VHQVIvh";
     public static final String ID_ATTR_PHONENUMBER = "uwjJhJ6kjN6";
