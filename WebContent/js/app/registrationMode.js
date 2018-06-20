@@ -609,9 +609,19 @@ function RegistrationMode( _mainPage )
 			data.gender = 'F';
 			data.age = Utils.calculateAge(data.dob);
 			
+			
 			data.event = {};
 			data.event.eventId =  me.eventId;
 			data.event.checkIn = checkIn;
+			var eventType = Commons.getDEValue( me.eventData.dataValues, Commons.DEID_A360_EventType );
+			if( eventType == "KM-PC" )
+			{
+				data.event.program = "FPL-A360-PAR";
+			}
+			else
+			{
+				data.event.program = "FPL-A360-ADO";
+			}
 			
 			Commons.runAjax( function(){
 				$.ajax(
